@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDDA Leaderboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Notification toasts (bottom-right) -->
+  <div id="toast-container" aria-live="polite"></div>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="header-inner">
+      <div class="header-brand">
+        <span class="cohort-tag">COHORT 2026</span>
+        <h1 class="site-title">IDDA ACHIEVEMENTS</h1>
+        <p class="site-subtitle" id="cohort-subtitle">Data, Design &amp; Development Academy</p>
+      </div>
+      <div class="header-actions">
+        <button id="ach-btn" class="ach-btn" aria-label="View all achievements">Achievements</button>
+        <button id="notif-btn" class="notif-btn" title="Notifications" aria-label="Open notifications">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
+          <span id="notif-count" class="notif-count" hidden>0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── NOTIFICATION PANEL ── -->
+  <aside id="notif-panel" class="notif-panel" hidden>
+    <div class="notif-panel-head">
+      <span class="notif-panel-title">Notifications</span>
+      <button id="mark-all-read" class="text-btn">Mark all read</button>
+    </div>
+    <ul id="notif-list" class="notif-list"></ul>
+    <p id="notif-empty" class="notif-empty" hidden>You're all caught up 🎉</p>
+  </aside>
+
+  <main>
+
+    <!-- ── STATS BAR ── -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-value" id="stat-players">0</span>
+        <span class="stat-label">Students</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-value" id="stat-achievements">0</span>
+        <span class="stat-label">Achievements</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-value" id="stat-unlocked">0</span>
+        <span class="stat-label">Unlocked</span>
+      </div>
+    </div>
+
+    <!-- ── PODIUM (top 3) ── -->
+    <section id="podium-section" class="section">
+      <h2 class="section-heading">
+        <span class="section-line"></span>
+        TOP PLAYERS
+        <span class="section-line"></span>
+      </h2>
+      <div id="podium" class="podium"></div>
+    </section>
+
+    <!-- ── FULL RANKINGS ── -->
+    <section class="section">
+      <h2 class="section-heading">
+        <span class="section-line"></span>
+        ALL PLAYERS
+        <span class="section-line"></span>
+      </h2>
+      <div id="players-grid" class="players-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- ── ACHIEVEMENTS CATALOG MODAL ── -->
+  <div id="ach-modal-overlay" class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="ach-modal-title">
+      <button id="ach-modal-close" class="modal-close" aria-label="Close">&times;</button>
+      <div id="ach-modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ── PLAYER DETAIL MODAL ── -->
+  <div id="modal-overlay" class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-player-name">
+      <button id="modal-close" class="modal-close" aria-label="Close">&times;</button>
+      <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
