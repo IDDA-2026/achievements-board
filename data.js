@@ -104,7 +104,9 @@ const LEADERBOARD_DATA = {
       name:   "Shaig",
       avatar: "avatars/shaig.png",
       title:  "",
-      earnedAchievements: []
+      earnedAchievements: [
+        { id: "bonus_lab_1", earnedAt: "2026-05-18" }
+      ]
     },
     {
       id:     "lala",
@@ -132,7 +134,9 @@ const LEADERBOARD_DATA = {
       name:   "Abdulvahhab",
       avatar: "avatars/abdulvahhab.png",
       title:  "",
-      earnedAchievements: []
+      earnedAchievements: [
+        { id: "bonus_lab_1", earnedAt: "2026-05-18" }
+      ]
     },
     {
       id:     "aslan",
