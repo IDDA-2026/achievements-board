@@ -917,20 +917,20 @@ main {
 
 .ach-date {
   font-size: 10px;
-  color: var(--text-muted);
+  color: #94a3b8;
   font-family: var(--font-ui);
 }
 
 .ach-locked-label {
   font-size: 10px;
-  color: var(--text-muted);
+  color: #94a3b8;
   font-family: var(--font-ui);
   letter-spacing: 1px;
 }
 
 .ach-desc {
   font-size: 11px;
-  color: var(--text-muted);
+  color: #94a3b8;
   font-family: var(--font-body);
   line-height: 1.4;
   text-align: center;
