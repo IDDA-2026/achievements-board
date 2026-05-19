@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   LEADERBOARD_DATA.achievements.forEach(a => { achievementsMap[a.id] = a; });
 
   // Apply meta
-  document.title = `${LEADERBOARD_DATA.meta.cohort} — Leaderboard`;
+  document.title = `${LEADERBOARD_DATA.meta.cohort} achievements`;
   const subtitle = document.getElementById('cohort-subtitle');
   if (subtitle) subtitle.textContent = LEADERBOARD_DATA.meta.subtitle;
 
@@ -61,6 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Wire up UI events
   document.getElementById('ach-btn').addEventListener('click', openAchievementsModal);
+  document.getElementById('stat-players-item').addEventListener('click', () => {
+    document.getElementById('players-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  document.getElementById('stat-ach-item').addEventListener('click', openAchievementsModal);
+  document.getElementById('stat-unlocked-item').addEventListener('click', openUnlockedModal);
   document.getElementById('ach-modal-close').addEventListener('click', closeAchievementsModal);
   document.getElementById('ach-modal-overlay').addEventListener('click', e => {
     if (e.target === document.getElementById('ach-modal-overlay')) closeAchievementsModal();
@@ -357,6 +362,48 @@ function openAchievementsModal() {
 function closeAchievementsModal() {
   document.getElementById('ach-modal-overlay').setAttribute('hidden', '');
   document.body.style.overflow = '';
+}
+
+
+function openUnlockedModal() {
+  const activeAchs = LEADERBOARD_DATA.achievements.filter(a => !a.locked);
+  const total = rankedPlayers.length;
+
+  const rows = activeAchs.map(ach => {
+    const count = rankedPlayers.filter(p =>
+      p.earnedAchievements.some(ea => ea.id === ach.id)
+    ).length;
+    const pct = total > 0 ? (count / total) * 100 : 0;
+    const rarityClass = `rarity-${ach.rarity}`;
+    return `
+      <div class="ach-breakdown-row ${rarityClass}">
+        <div class="ach-breakdown-icon">${ach.icon}</div>
+        <div>
+          <div class="ach-breakdown-name">${escHtml(ach.name)}</div>
+          <div class="ach-rarity ${rarityClass}">${ach.rarity} · +${ach.points} pts</div>
+          <div class="ach-breakdown-bar-wrap">
+            <div class="ach-breakdown-bar">
+              <div class="ach-breakdown-bar-fill ${rarityClass}" style="width:${pct}%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="ach-breakdown-count">
+          <span class="ach-breakdown-num">${count}</span>
+          <span class="ach-breakdown-total">/ ${total}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('ach-modal-body').innerHTML = `
+    <div class="modal-ach-section ach-catalog-section">
+      <h2 class="modal-ach-heading" id="ach-modal-title">Achievement Breakdown</h2>
+      <div class="ach-breakdown-list">${rows}</div>
+    </div>
+  `;
+
+  document.getElementById('ach-modal-overlay').removeAttribute('hidden');
+  document.body.style.overflow = 'hidden';
 }
 
 // ── NOTIFICATIONS ──────────────────────────────────────────
