@@ -60,7 +60,9 @@ const LEADERBOARD_DATA = {
       name:   "Yusif",
       avatar: "avatars/yusif.png",
       title:  "",
-      earnedAchievements: []
+      earnedAchievements: [
+        { id: "bonus_lab_1", earnedAt: "2026-05-18" }
+      ]
     },
     {
       id:     "yaqut",
@@ -127,7 +129,9 @@ const LEADERBOARD_DATA = {
       name:   "Kenan",
       avatar: "avatars/kenan.png",
       title:  "",
-      earnedAchievements: []
+      earnedAchievements: [
+        { id: "bonus_lab_1", earnedAt: "2026-05-18" }
+      ]
     },
     {
       id:     "abdulvahhab",
@@ -150,14 +154,18 @@ const LEADERBOARD_DATA = {
       name:   "Rəvan",
       avatar: "avatars/revan.png",
       title:  "",
-      earnedAchievements: []
+      earnedAchievements: [
+        { id: "bonus_lab_1", earnedAt: "2026-05-18" }
+      ]
     },
     {
       id:     "mikayil",
       name:   "Mikayil",
       avatar: "avatars/mikayil.png",
       title:  "",
-      earnedAchievements: []
+      earnedAchievements: [
+        { id: "bonus_lab_1", earnedAt: "2026-05-18" }
+      ]
     },
     {
       id:     "asiman",
@@ -178,7 +186,9 @@ const LEADERBOARD_DATA = {
       name:   "Nuray",
       avatar: "avatars/nuray.png",
       title:  "",
-      earnedAchievements: []
+      earnedAchievements: [
+        { id: "bonus_lab_1", earnedAt: "2026-05-18" }
+      ]
     },
     {
       id:     "nihad",
