@@ -63,15 +63,6 @@ const LEADERBOARD_DATA = {
       category: "challenge",
     },
     {
-      id: "kahoot_fixjava_3rd",
-      name: "Kahoot: Fix My Java Brain: 3rd Place",
-      description: "Third place in the Fix My Java Brain Kahoot challenge.",
-      icon: "🥉",
-      points: 100,
-      rarity: "uncommon",
-      category: "challenge",
-    },
-    {
       id: "labs_week_may18",
       name: "Week of May 18 — Labs Delivered",
       description: "All labs for the week of May 18 delivered by end of week.",
@@ -117,7 +108,7 @@ const LEADERBOARD_DATA = {
       name: "Ulvi",
       avatar: "avatars/ulvi.png",
       title: "",
-      earnedAchievements: [],
+      earnedAchievements: [{ id: "kahoot_fixjava_2nd", earnedAt: "2026-05-20" }],
     },
     {
       id: "sevinc",
@@ -131,7 +122,7 @@ const LEADERBOARD_DATA = {
       name: "Omar",
       avatar: "avatars/omar.png",
       title: "",
-      earnedAchievements: [{ id: "bonus_lab_1", earnedAt: "2026-05-18" }, { id: "bonus_lab_2", earnedAt: "2026-05-19" }],
+      earnedAchievements: [{ id: "bonus_lab_1", earnedAt: "2026-05-18" }, { id: "bonus_lab_2", earnedAt: "2026-05-19" }, { id: "kahoot_fixjava_1st", earnedAt: "2026-05-20" }],
     },
     {
       id: "shaig",
@@ -159,7 +150,7 @@ const LEADERBOARD_DATA = {
       name: "Kenan",
       avatar: "avatars/kenan.png",
       title: "",
-      earnedAchievements: [{ id: "bonus_lab_1", earnedAt: "2026-05-18" }, { id: "bonus_lab_2", earnedAt: "2026-05-19" }],
+      earnedAchievements: [{ id: "bonus_lab_1", earnedAt: "2026-05-18" }, { id: "bonus_lab_2", earnedAt: "2026-05-19" }, { id: "kahoot_fixjava_1st", earnedAt: "2026-05-20" }],
     },
     {
       id: "abdulvahhab",
@@ -257,7 +248,7 @@ const LEADERBOARD_DATA = {
       name: "Mansura",
       avatar: "avatars/default.png",
       title: "",
-      earnedAchievements: [],
+      earnedAchievements: [{ id: "bonus_lab_1", earnedAt: "2026-05-20" }],
     },
     {
       id: "mohsin",
