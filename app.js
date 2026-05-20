@@ -140,14 +140,17 @@ function avatarHTML(player, size) {
 // ── STATS BAR ──────────────────────────────────────────────
 function renderStats() {
   const totalUnlocked = rankedPlayers.reduce((s, p) => s + p.earnedAchievements.length, 0);
-  animateCounter('stat-players', rankedPlayers.length);
-  animateCounter('stat-achievements', LEADERBOARD_DATA.achievements.length);
+  document.getElementById('stat-players').textContent = rankedPlayers.length;
+  document.getElementById('stat-achievements').textContent = LEADERBOARD_DATA.achievements.length;
   animateCounter('stat-unlocked', totalUnlocked);
 }
 
 function animateCounter(id, target) {
   const el = document.getElementById(id);
-  if (!el) return;
+  if (el) animateEl(el, target);
+}
+
+function animateEl(el, target) {
   const duration = 900;
   const start = performance.now();
   const step = ts => {
@@ -206,7 +209,7 @@ function renderPodium() {
           <div class="podium-rank-badge">${rankLabels[rank]}</div>
           <div class="podium-name">${escHtml(player.name)}</div>
           <div class="podium-title">${escHtml(getPlayerTitle(player))}</div>
-          <div class="podium-points">${player.computedPoints} <span style="font-size:12px;color:var(--text-2)">PTS</span></div>
+          <div class="podium-points"><span data-pts="${player.computedPoints}">0</span> <span style="font-size:12px;color:var(--text-2)">PTS</span></div>
           <div class="podium-prog">
             <div class="podium-prog-bar" style="width:${pct}%"></div>
           </div>
@@ -218,6 +221,10 @@ function renderPodium() {
 
   container.querySelectorAll('.podium-slot').forEach(slot => {
     slot.addEventListener('click', () => openModal(slot.dataset.id));
+  });
+
+  container.querySelectorAll('.podium-points [data-pts]').forEach(el => {
+    animateEl(el, parseInt(el.dataset.pts));
   });
 }
 
@@ -245,7 +252,7 @@ function renderGrid() {
           </div>
         </div>
         <div class="row-right">
-          <div class="row-points">${player.computedPoints}</div>
+          <div class="row-points" data-pts="${player.computedPoints}">0</div>
           <div class="row-pts-label">PTS</div>
         </div>
       </div>
@@ -254,6 +261,10 @@ function renderGrid() {
 
   container.querySelectorAll('.player-row').forEach(row => {
     row.addEventListener('click', () => openModal(row.dataset.id));
+  });
+
+  container.querySelectorAll('.row-points[data-pts]').forEach(el => {
+    animateEl(el, parseInt(el.dataset.pts));
   });
 }
 
@@ -423,10 +434,11 @@ function getUnseenKeys() {
   for (const player of rankedPlayers) {
     for (const ea of player.earnedAchievements) {
       const key = `${player.id}:${ea.id}`;
-      if (!seen.has(key)) unseen.push(key);
+      if (!seen.has(key)) unseen.push({ key, earnedAt: ea.earnedAt || '' });
     }
   }
-  return unseen;
+  unseen.sort((a, b) => b.earnedAt.localeCompare(a.earnedAt));
+  return unseen.map(u => u.key);
 }
 
 function updateNotifBadge(count) {
@@ -557,6 +569,7 @@ function renderNotifPanel() {
   empty.setAttribute('hidden', '');
   const seen = getSeenSet();
   const payloads = buildNotifPayloads(allKeys);
+  payloads.sort((a, b) => (b.earnedAt || '').localeCompare(a.earnedAt || ''));
 
   list.innerHTML = payloads.map(({ key, player, ach, earnedAt }) => {
     const readClass = seen.has(key) ? ' read' : '';
