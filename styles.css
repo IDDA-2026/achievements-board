@@ -573,17 +573,39 @@ main {
   transform: translateX(4px);
 }
 
-.rank-num {
-  font-family: var(--font-title);
-  font-size: 16px;
-  font-weight: 900;
-  text-align: center;
-  color: var(--text-muted);
+.rank-bm-col {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
 }
 
-.rank-num.rank-1 { color: var(--gold); }
-.rank-num.rank-2 { color: var(--silver); }
-.rank-num.rank-3 { color: var(--bronze); }
+.rank-bookmark {
+  position: absolute;
+  top: -14px;
+  width: 36px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 14px;
+  clip-path: polygon(0 0, 100% 0, 100% 74%, 50% 100%, 0 74%);
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));
+}
+
+.rank-bookmark img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: block;
+}
+
+.rank-bm-1     { background: linear-gradient(180deg, #6d0e92, #230345); }
+.rank-bm-2     { background: linear-gradient(180deg, #9f1239, #4c0519); }
+.rank-bm-3     { background: linear-gradient(180deg, #129a44, #074331); }
+.rank-bm-other { background: linear-gradient(180deg, #1e3a8a, #1e1b4b); }
 
 .row-avatar {
   width: 48px;
@@ -1058,6 +1080,8 @@ main {
     gap: 10px;
     padding: 12px 14px;
   }
+
+  .rank-bookmark { top: -12px; }
 
   /* Modals — tighter overlay padding so the sheet fills the screen */
   .modal-overlay { padding: 10px; }

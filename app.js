@@ -229,6 +229,13 @@ function renderPodium() {
 }
 
 // ── PLAYERS GRID ───────────────────────────────────────────
+function rankBookmark(rank) {
+  if (rank === 1) return { icon: '<img src="icons/Star.webp" alt="1st">', cls: 'rank-bm-1' };
+  if (rank === 2) return { icon: '<img src="icons/Fire_Flower.webp" alt="2nd">', cls: 'rank-bm-2' };
+  if (rank === 3) return { icon: '<img src="icons/mushroom-flying.png" alt="3rd">', cls: 'rank-bm-3' };
+  return { icon: '<img src="icons/Mushroom.png" alt="rank">', cls: 'rank-bm-other' };
+}
+
 function renderGrid() {
   const container = document.getElementById('players-grid');
   const total = LEADERBOARD_DATA.achievements.length;
@@ -236,10 +243,12 @@ function renderGrid() {
   container.innerHTML = rankedPlayers.map(player => {
     const rank = player.rank;
     const pct = total > 0 ? (player.earnedAchievements.length / total) * 100 : 0;
-    const rankClass = rank <= 3 ? `rank-${rank}` : '';
+    const bm = rankBookmark(rank);
     return `
       <div class="player-row" data-id="${player.id}">
-        <div class="rank-num ${rankClass}">${rank}</div>
+        <div class="rank-bm-col">
+          <div class="rank-bookmark ${bm.cls}">${bm.icon}</div>
+        </div>
         <div class="row-avatar">${avatarHTML(player, 48)}</div>
         <div class="row-info">
           <div class="row-name">${escHtml(player.name)}</div>

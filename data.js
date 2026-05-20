@@ -101,7 +101,7 @@ const LEADERBOARD_DATA = {
       name: "Umut",
       avatar: "avatars/umut.png",
       title: "",
-      earnedAchievements: [{ id: "bonus_lab_1", earnedAt: "2026-05-19" }],
+      earnedAchievements: [{ id: "bonus_lab_1", earnedAt: "2026-05-19" }, { id: "bonus_lab_2", earnedAt: "2026-05-20" }],
     },
     {
       id: "ulvi",
