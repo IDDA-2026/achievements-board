@@ -72,3 +72,8 @@ Several elements use `display: flex` in CSS, which overrides the browser's UA `[
 ## Avatars
 
 Player photos live in `avatars/`. Filename must match the player `id` (e.g. `avatars/yusif.png`). Players without a photo use `avatars/default.png`.
+
+
+## Students list
+
+The students list is complete. We must not add new students or delete them. The names must not be modified.
