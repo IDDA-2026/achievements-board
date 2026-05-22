@@ -82,6 +82,24 @@ const LEADERBOARD_DATA = {
       category: "challenge",
     },
     {
+      id: "kahoot_javavsjs_1st",
+      name: "Kahoot: Java vs JavaScript: 1st Place",
+      description: "Winner of the Java vs JavaScript Kahoot challenge.",
+      icon: "🏆",
+      points: 500,
+      rarity: "epic",
+      category: "challenge",
+    },
+    {
+      id: "kahoot_javavsjs_2nd",
+      name: "Kahoot: Java vs JavaScript: 2nd Place",
+      description: "Second place in the Java vs JavaScript Kahoot challenge.",
+      icon: "🥈",
+      points: 250,
+      rarity: "rare",
+      category: "challenge",
+    },
+    {
       id: "labs_week_may18",
       name: "Week of May 18 — Labs Delivered",
       description: "All labs for the week of May 18 delivered by end of week.",
@@ -200,6 +218,7 @@ const LEADERBOARD_DATA = {
         { id: "bonus_lab_2", earnedAt: "2026-05-19" },
         { id: "kahoot_fixjava_1st", earnedAt: "2026-05-20" },
         { id: "bonus_lab_3", earnedAt: "2026-05-20" },
+        { id: "kahoot_javavsjs_1st", earnedAt: "2026-05-22" },
       ],
     },
     {
@@ -208,6 +227,7 @@ const LEADERBOARD_DATA = {
       avatar: "avatars/abdulvahhab.png",
       title: "",
       earnedAchievements: [
+        { id: "on_time", earnedAt: "2026-05-22" },
         { id: "bonus_lab_1", earnedAt: "2026-05-18" },
         { id: "bonus_lab_2", earnedAt: "2026-05-19" },
         { id: "bonus_lab_3", earnedAt: "2026-05-20" },
@@ -221,6 +241,7 @@ const LEADERBOARD_DATA = {
       earnedAchievements: [
         { id: "bonus_lab_1", earnedAt: "2026-05-19" },
         { id: "bonus_lab_2", earnedAt: "2026-05-19" },
+        { id: "bonus_lab_3", earnedAt: "2026-05-21" },
       ],
     },
     {
@@ -259,7 +280,7 @@ const LEADERBOARD_DATA = {
       name: "Shebnem",
       avatar: "avatars/shebnem.png",
       title: "",
-      earnedAchievements: [{ id: "bonus_lab_1", earnedAt: "2026-05-19" }],
+      earnedAchievements: [{ id: "bonus_lab_1", earnedAt: "2026-05-19" },  { id: "bonus_lab_2", earnedAt: "2026-05-21" },],
     },
     {
       id: "nuray",
@@ -309,7 +330,9 @@ const LEADERBOARD_DATA = {
       name: "Islam",
       avatar: "avatars/default.png",
       title: "",
-      earnedAchievements: [],
+      earnedAchievements: [
+        { id: "kahoot_javavsjs_2nd", earnedAt: "2026-05-22" },
+      ],
     },
     {
       id: "ilkin",
@@ -343,6 +366,7 @@ const LEADERBOARD_DATA = {
       earnedAchievements: [
         { id: "bonus_lab_1", earnedAt: "2026-05-19" },
         { id: "bonus_lab_2", earnedAt: "2026-05-19" },
+        { id: "bonus_lab_3", earnedAt: "2026-05-22" },
       ],
     },
     {
